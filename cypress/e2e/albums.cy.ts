@@ -5,7 +5,7 @@ describe('AlbumsTable spec', () => {
     cy.visit('http://localhost:9002/');
   });
 
-  it('should show 10 albums when data is fetched', () => {
+  it('should show 100 albums when data is fetched', () => {
     cy.get('.loading.loading-spinner').should('not.exist');
     cy.get('tbody tr').should('have.length', 100);
   });
