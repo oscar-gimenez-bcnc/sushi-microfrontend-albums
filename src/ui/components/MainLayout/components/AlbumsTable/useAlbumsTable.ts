@@ -9,9 +9,10 @@ import { createBrokenRepository } from '@/infrastructure/dataSource/BrokenReposi
 import { createEmptyAlbumRepository } from '@/infrastructure/dataSource/EmptyRepository';
 import { createHardcodedAlbumRepository } from '@/infrastructure/dataSource/HardcodedAlbumRepository';
 import { DataSources } from '@/ui/shared/enums/enums';
+import { createApiAlbumWithCacheRepository } from '@/infrastructure/dataSource/ApiAlbumWithCacheRepository';
 
 const useAlbumsTable = (): IHookResponse => {
-  const { dataSource } = useContext(GlobalContext);
+  const { dataSource, isCacheEnabled, cacheActions } = useContext(GlobalContext);
   const { isLoading, albums, errorMessage, setErrorMessage, setAlbums, setIsLoading } = useContext(AlbumsTableContext);
 
   useEffect(() => {
@@ -20,7 +21,10 @@ const useAlbumsTable = (): IHookResponse => {
       setIsLoading(true);
       try {
         const albumRepositoryMap: { [key in DataSources]: () => IAlbumRepository } = {
-          [DataSources.EXTERNAL]: createApiAlbumRepository,
+          [DataSources.EXTERNAL]:
+            isCacheEnabled && cacheActions !== undefined
+              ? () => createApiAlbumWithCacheRepository({ cacheActions })
+              : createApiAlbumRepository,
           [DataSources.INTERNAL]: createHardcodedAlbumRepository,
           [DataSources.EMPTY]: createEmptyAlbumRepository,
           [DataSources.BROKEN]: createBrokenRepository

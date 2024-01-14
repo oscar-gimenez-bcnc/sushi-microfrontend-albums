@@ -6,20 +6,32 @@ interface IGlobalContext {
   setDataSource: (dataSource: string) => void;
   downloadMethod: string;
   setDownloadMethod: (downloadMethod: string) => void;
+  isCacheEnabled: boolean;
+  cacheActions?: ICacheActions;
 }
 
 const GlobalContext = createContext<IGlobalContext>({
   dataSource: DataSources.EXTERNAL,
   setDataSource: () => {},
   downloadMethod: DownloadMethods.JSON,
-  setDownloadMethod: () => {}
+  setDownloadMethod: () => {},
+  isCacheEnabled: false,
+  cacheActions: {
+    getAlbumsCacheData: () => undefined,
+    renewAlbumsExpiryDate: () => undefined,
+    getAlbumCache: () => {},
+    setAlbumCache: () => {},
+    clearAlbumsCache: () => {}
+  }
 });
 
 interface GlobalProviderProps {
   children: React.ReactNode;
+  isCacheEnabled: boolean;
+  cacheActions?: ICacheActions;
 }
 
-const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
+const GlobalProvider: React.FC<GlobalProviderProps> = ({ children, isCacheEnabled, cacheActions }) => {
   const [dataSource, setDataSource] = useState<string>(DataSources.EXTERNAL);
   const [downloadMethod, setDownloadMethod] = useState<string>(DownloadMethods.JSON);
 
@@ -27,7 +39,9 @@ const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
     dataSource,
     setDataSource,
     downloadMethod,
-    setDownloadMethod
+    setDownloadMethod,
+    isCacheEnabled,
+    cacheActions
   };
 
   return <GlobalContext.Provider value={contextValue}>{children}</GlobalContext.Provider>;

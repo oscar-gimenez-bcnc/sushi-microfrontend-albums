@@ -3,11 +3,15 @@ import GenericError from './ui/components/GenericError';
 import MainLayout from './ui/components/MainLayout';
 import { GlobalProvider } from './ui/context/GlobalContext';
 
-const App: React.FC = () => {
+interface AppProps {
+  cacheActions?: ICacheActions;
+}
+
+const App: React.FC<AppProps> = (props: AppProps) => {
   return (
     <div className="container mx-auto">
       <ErrorBoundary fallback={<GenericError />}>
-        <GlobalProvider>
+        <GlobalProvider isCacheEnabled={props.cacheActions !== undefined} cacheActions={props.cacheActions}>
           <MainLayout />
         </GlobalProvider>
       </ErrorBoundary>

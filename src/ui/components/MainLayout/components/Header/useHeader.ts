@@ -4,7 +4,7 @@ import { DataSources, DownloadMethods } from '@/ui/shared/enums/enums';
 import { type IHookResponse } from '@/ui/shared/types/types';
 
 const useHeader = (): IHookResponse => {
-  const { dataSource, downloadMethod, setDataSource, setDownloadMethod } = useContext(GlobalContext);
+  const { dataSource, downloadMethod, isCacheEnabled, setDataSource, setDownloadMethod } = useContext(GlobalContext);
 
   const handleChangeDataSource = (): void => {
     const nextDataSourceMap: { [key in DataSources]: DataSources } = {
@@ -24,7 +24,7 @@ const useHeader = (): IHookResponse => {
 
   return {
     actions: { handleChangeDataSource, handleChangeDownloadMethod },
-    states: { dataSource, downloadMethod }
+    states: { dataSource, downloadMethod, isCacheEnabled }
   };
 };
 
