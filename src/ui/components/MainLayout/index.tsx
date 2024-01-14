@@ -1,6 +1,6 @@
 import Header from './components/Header';
 import AlbumsTable from './components/AlbumsTable';
-import { AlbumsTableProvider } from './components/AlbumsTable/context/AlbumsTableContext';
+import { AlbumsTableProvider } from './components/AlbumsTable/contexts/AlbumsTableContext';
 
 const MainLayout: React.FC = () => {
   return (

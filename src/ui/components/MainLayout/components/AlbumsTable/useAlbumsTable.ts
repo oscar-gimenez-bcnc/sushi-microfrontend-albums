@@ -1,7 +1,7 @@
-import { GlobalContext } from '@/ui/context/GlobalContext';
+import { GlobalContext } from '@/ui/contexts/GlobalContext';
 import { type IHookResponse } from '@/ui/shared/types/types';
 import { useContext, useEffect } from 'react';
-import { AlbumsTableContext } from './context/AlbumsTableContext';
+import { AlbumsTableContext } from './contexts/AlbumsTableContext';
 import { listAlbums } from '@/application/listAlbums/listAlbums';
 import { type IAlbumRepository } from '@/domain/ports/IAlbumRepository';
 import { createApiAlbumRepository } from '@/infrastructure/dataSource/ApiAlbumRepository';

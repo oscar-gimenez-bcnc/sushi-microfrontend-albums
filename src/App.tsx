@@ -1,7 +1,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import GenericError from './ui/components/GenericError';
 import MainLayout from './ui/components/MainLayout';
-import { GlobalProvider } from './ui/context/GlobalContext';
+import { GlobalProvider } from './ui/contexts/GlobalContext';
 import './ui/styles/globals.css';
 
 interface AppProps {
