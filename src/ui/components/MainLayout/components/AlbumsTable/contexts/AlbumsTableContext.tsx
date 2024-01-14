@@ -11,7 +11,7 @@ interface IAlbumsTableContext {
 }
 
 const AlbumsTableContext = createContext<IAlbumsTableContext>({
-  isLoading: false,
+  isLoading: true,
   setIsLoading: () => {},
   errorMessage: undefined,
   setErrorMessage: () => {},
@@ -24,7 +24,7 @@ interface AlbumsTableProviderProps {
 }
 
 const AlbumsTableProvider: React.FC<AlbumsTableProviderProps> = ({ children }) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
   const [albums, setAlbums] = useState<IAlbum[]>([]);
 

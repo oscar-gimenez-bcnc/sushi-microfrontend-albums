@@ -18,7 +18,7 @@ const useAlbumsTable = (): IHookResponse => {
   useEffect(() => {
     const dataFetcher = async (): Promise<void> => {
       setErrorMessage(undefined);
-      setIsLoading(true);
+
       try {
         const albumRepositoryMap: { [key in DataSources]: () => IAlbumRepository } = {
           [DataSources.EXTERNAL]:
