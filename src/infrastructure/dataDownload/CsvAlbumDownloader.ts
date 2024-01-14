@@ -2,7 +2,7 @@ import { type IAlbum } from '@/domain/models/IAlbum';
 import { type IAlbumDownloader } from '@/domain/ports/IAlbumDownloader';
 import { type DownloadFileProps, downloadFile } from './helper';
 
-export function createCsvAlbumDownloader(): IAlbumDownloader {
+export const createCsvAlbumDownloader = (): IAlbumDownloader => {
   const convertAlbumToCsv = (album: IAlbum): string => {
     const headers = 'User ID,ID,Title';
     const row = [album.userId, album.id, album.title].map((field) => `"${field}"`).join(',');
@@ -16,4 +16,4 @@ export function createCsvAlbumDownloader(): IAlbumDownloader {
   };
 
   return { download };
-}
+};

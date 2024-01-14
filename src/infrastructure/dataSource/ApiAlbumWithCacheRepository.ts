@@ -5,8 +5,10 @@ interface createApiAlbumRepositoryProps {
   cacheActions: ICacheActions;
 }
 
-export function createApiAlbumWithCacheRepository({ cacheActions }: createApiAlbumRepositoryProps): IAlbumRepository {
-  async function list(): Promise<IAlbum[]> {
+export const createApiAlbumWithCacheRepository = ({
+  cacheActions
+}: createApiAlbumRepositoryProps): IAlbumRepository => {
+  const list = async (): Promise<IAlbum[]> => {
     const cache = cacheActions.getAlbumsCacheData();
 
     if (cache !== undefined) {
@@ -39,7 +41,7 @@ export function createApiAlbumWithCacheRepository({ cacheActions }: createApiAlb
     });
 
     return albums;
-  }
+  };
 
   return { list };
-}
+};
