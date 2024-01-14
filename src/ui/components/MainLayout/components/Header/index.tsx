@@ -5,12 +5,14 @@ import useHeader from './useHeader';
 const Header: React.FC = () => {
   const {
     actions: { handleChangeDataSource, handleChangeDownloadMethod },
-    states: { dataSource, downloadMethod, isCacheEnabled }
+    states: { dataSource, downloadMethod }
   } = useHeader();
 
   return (
     <div className="flex items-center justify-between gap-2">
-      <span>Sushi Albums: {isCacheEnabled === true ? 'is using global cache system' : 'is not using cache'}</span>
+      <div className="flex flex-row items-baseline gap-2">
+        <h1 className="text-xl font-bold">Sushi Photos</h1> <span className="text-sm text-gray-600">Albums</span>
+      </div>
       <div className="flex items-center justify-end gap-2">
         <h5 className="flex flex-row items-center gap-2 text-sm">
           <span className="badge badge-ghost badge-xs gap-2 p-2">
