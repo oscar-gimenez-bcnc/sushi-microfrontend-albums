@@ -24,7 +24,9 @@ const AlbumsTable: React.FC = () => {
           ) : (
             albums.map((album: IAlbum) => (
               <tr key={album.id}>
-                <th>{album.id}</th>
+                <th>
+                  <LabelCell label={album.id.toString()} />
+                </th>
                 <td aria-label="User ID cell">
                   <LabelCell label={album.userId.toString()} />
                 </td>
