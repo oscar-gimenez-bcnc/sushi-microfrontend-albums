@@ -1,4 +1,4 @@
 /__mocks__
 cypress/**
-*.config.js
-*.config.ts
+*.config*.js
+*.config*.ts
