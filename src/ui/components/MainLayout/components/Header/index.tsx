@@ -19,7 +19,7 @@ const Header: React.FC = () => {
           </>
         )}
       </div>
-      <div className="flex items-center justify-end gap-2">
+      <div className="hidden items-center justify-end gap-2 md:flex">
         <h5 className="flex flex-row items-center gap-2 text-sm">
           <span className="badge badge-ghost badge-xs gap-2 p-2">
             {downloadMethod}
