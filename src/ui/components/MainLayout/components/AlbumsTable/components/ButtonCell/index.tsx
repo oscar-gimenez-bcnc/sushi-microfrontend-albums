@@ -1,5 +1,5 @@
 import { type IAlbum } from '@/domain/models/IAlbum';
-import useDownloadCell from './useButtonCell';
+import useButtonCell from './useButtonCell';
 
 interface ButtonCellProps {
   album: IAlbum;
@@ -7,8 +7,13 @@ interface ButtonCellProps {
 
 const ButtonCell: React.FC<ButtonCellProps> = ({ album }) => {
   const {
-    actions: { handleSendNotification, handleSendNotificationEventEmitter }
-  } = useDownloadCell();
+    actions: {
+      handleSendNotification,
+      handleSendNotificationEventEmitter,
+      handleSendNotificationEventEmitterFederated,
+      handleSendNotificationRxjs
+    }
+  } = useButtonCell();
 
   return (
     <button
@@ -17,7 +22,9 @@ const ButtonCell: React.FC<ButtonCellProps> = ({ album }) => {
       className="btn btn-ghost btn-xs bg-slate-200"
       onClick={() => {
         /* handleSendNotification(album); */
-        handleSendNotificationEventEmitter(album);
+        /* handleSendNotificationEventEmitter(album); */
+        /* handleSendNotificationEventEmitterFederated(album); */
+        handleSendNotificationRxjs(album);
       }}
     >
       Send notification

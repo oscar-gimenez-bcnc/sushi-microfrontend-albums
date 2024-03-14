@@ -51,7 +51,9 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'SushiMicroFrontendAlbums',
       filename: 'remoteEntry.js',
-      remotes: {},
+      remotes: {
+        SushiMicroFrontendNotifications: 'SushiMicroFrontendNotifications@http://localhost:9005/remoteEntry.js'
+      },
       exposes: {
         './SushiMicroFrontendAlbums': './src/App.tsx'
       },
@@ -59,6 +61,10 @@ module.exports = {
         react: {
           singleton: true,
           requiredVersion: dependencies.react
+        },
+        rxjs: {
+          singleton: true,
+          requiredVersion: dependencies.rxjs
         },
         'react-dom': {
           singleton: true,

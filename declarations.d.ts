@@ -1,7 +1,2 @@
-import EventEmitter from 'eventemitter3';
-
-declare global {
-  interface Window {
-    eventBus?: EventEmitter;
-  }
-}
+declare module 'SushiMicroFrontendNotifications/EventEmitterBus';
+declare module 'SushiMicroFrontendNotifications/EventRxJSBus';
