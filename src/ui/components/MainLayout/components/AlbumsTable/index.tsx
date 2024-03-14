@@ -6,6 +6,7 @@ import ErrorData from './components/ErrorData';
 import { type IAlbum } from '@/domain/models/IAlbum';
 import EmptyData from './components/EmptyData';
 import Loader from './components/Loader';
+import ButtonCell from './components/ButtonCell';
 
 const AlbumsTable: React.FC = () => {
   const {
@@ -35,6 +36,9 @@ const AlbumsTable: React.FC = () => {
                 </td>
                 <td aria-label="Download row">
                   <DownloadCell album={album} />
+                </td>
+                <td aria-label="Emit event">
+                  <ButtonCell album={album} />
                 </td>
               </tr>
             ))
